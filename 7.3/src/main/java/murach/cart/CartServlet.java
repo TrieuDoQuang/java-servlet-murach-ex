@@ -37,8 +37,6 @@ public class CartServlet extends HttpServlet {
                 cart = new Cart();
             }
 
-            // if the user enters a negative or invalid quantity,
-            // the quantity is automatically reset to 1.
             int quantity;
             try {
                 quantity = Integer.parseInt(quantityString);
@@ -57,6 +55,7 @@ public class CartServlet extends HttpServlet {
             lineItem.setQuantity(quantity);
             if (quantity > 0) {
                 cart.addItem(lineItem);
+
             } else if (quantity == 0) {
                 cart.removeItem(lineItem);
             }
